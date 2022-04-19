@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10f;
-    public float gravity = -10f;
+    public float gravity = 10f;
 
     private CharacterController charController;
 
@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
         float z = Input.GetAxis("Vertical");
 
         Vector3 move = transform.right * x + transform.forward * z;
+
+
 
         charController.Move(move * speed * Time.deltaTime);
     }
