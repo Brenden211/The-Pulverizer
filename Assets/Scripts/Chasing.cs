@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Animations;
 using UnityEngine.AI;
 using UnityEngine;
 
@@ -7,14 +8,18 @@ public class Chasing : MonoBehaviour
 {
     // Variable to reference the object we want to move towards
     public Transform target;
-    public float updateFrequency = 0.1f;
-    public bool trackTarget = false;
+    public Animator eAnimator;
 
-    private float updateCounter = 0;
     private NavMeshAgent agent;
+
+    public float updateFrequency = 0.1f;
+    public bool chaseTarget = false;
+    
+    private float updateCounter = 0;
 
     void Start()
     {
+
         // If statement to check if the target is referenced
         if (target != null)
         {
@@ -29,16 +34,28 @@ public class Chasing : MonoBehaviour
 
     void Update()
     {
-        if (updateCounter >= updateFrequency && trackTarget == true)
+        if (updateCounter >= updateFrequency && chaseTarget == true)
         {
+            // Sets the Walk Forward bool to true
+            eAnimator.SetBool("Walk Forward", true);
+
             // Sets the agent's destination to the target's position
             agent.SetDestination(target.position);
 
             updateCounter = 0;
         }
+
         else
         {
             updateCounter += Time.deltaTime;
+        }
+    }
+    void OnTriggerEnter(Collider other)
+    {
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Target"))
+        {
+            eAnimator.SetTrigger("Stab Attack");
         }
     }
 }

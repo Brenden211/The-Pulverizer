@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -425,6 +425,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2203328434116353826, guid: 1f9c8e5e2fd715e4a943e78fee339e9f, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203328434116353826, guid: 1f9c8e5e2fd715e4a943e78fee339e9f, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2203328434116353826, guid: 1f9c8e5e2fd715e4a943e78fee339e9f, type: 3}
+      propertyPath: m_Center.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f9c8e5e2fd715e4a943e78fee339e9f, type: 3}
 --- !u!1 &1703477187244692235
@@ -438,7 +450,7 @@ GameObject:
   - component: {fileID: 1708223023994412867}
   - component: {fileID: 1703477187244692236}
   - component: {fileID: 1703477187244692237}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: The Pulverizer
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -523,7 +535,7 @@ GameObject:
   - component: {fileID: 1703764753228763390}
   - component: {fileID: 1703764753228763391}
   - component: {fileID: 1703764753228763384}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: First Person Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -593,7 +605,7 @@ GameObject:
   - component: {fileID: 1703764753737445964}
   - component: {fileID: 1703764753737445965}
   - component: {fileID: 1703764753737445938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}

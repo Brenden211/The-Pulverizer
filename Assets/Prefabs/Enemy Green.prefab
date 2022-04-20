@@ -196,6 +196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 606243706385669419}
   - component: {fileID: 603873125783639014}
+  - component: {fileID: 2203328434116353826}
   - component: {fileID: 603873125783639015}
   - component: {fileID: 603873125783639012}
   - component: {fileID: 603873125783639013}
@@ -254,6 +255,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!135 &2203328434116353826
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603873125783639009}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &603873125783639015
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -308,8 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  eAnimator: {fileID: 603873125783639012}
   updateFrequency: 0.1
-  trackTarget: 0
+  chaseTarget: 0
 --- !u!1 &603961109150574069
 GameObject:
   m_ObjectHideFlags: 0
