@@ -8,6 +8,7 @@ public class Chasing : MonoBehaviour
     // Variable to reference the object we want to move towards
     public Transform target;
     public float updateFrequency = 0.1f;
+    public bool trackTarget = false;
 
     private float updateCounter = 0;
     private NavMeshAgent agent;
@@ -28,11 +29,10 @@ public class Chasing : MonoBehaviour
 
     void Update()
     {
-        if (updateCounter >= updateFrequency)
+        if (updateCounter >= updateFrequency && trackTarget == true)
         {
             // Sets the agent's destination to the target's position
             agent.SetDestination(target.position);
-
 
             updateCounter = 0;
         }
