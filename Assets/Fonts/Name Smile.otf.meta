@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7f44909bfe7c0d94bb70c42af251dc3f
+guid: 9704661170521fb4aacacb25312e01c7
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Voice In My Head
+  - Name Smile
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
