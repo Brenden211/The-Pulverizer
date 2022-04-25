@@ -4,7 +4,7 @@ using UnityEngine.Animations;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class Chasing : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     // Variable to reference the object we want to move towards
     public Transform target;
