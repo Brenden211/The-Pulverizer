@@ -9,12 +9,14 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 10f;
     public float gravity = -10f;
     public float jumpHeight = 10f;
+    public float groundDistance = 0.5f;
 
     public Transform groundCheck;
-    public float groundDistance = 0.5f;
     public LayerMask groundMask;
+    public Animator pAnimator;
 
     Vector3 velocity;
+
     public bool isGrounded = true;
 
     private void Update()
@@ -39,9 +41,19 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Shoot();
+        }
+
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void Shoot()
+    {
+        pAnimator.SetTrigger("Shoot");
     }
 }
 
