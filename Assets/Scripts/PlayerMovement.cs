@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform groundCheck;
     public LayerMask groundMask;
-    public Animator pAnimator;
 
     Vector3 velocity;
 
@@ -41,19 +40,9 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
-        }
-
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-    }
-
-    void Shoot()
-    {
-        pAnimator.SetTrigger("Shoot");
     }
 }
 

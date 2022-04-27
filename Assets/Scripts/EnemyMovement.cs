@@ -58,4 +58,10 @@ public class EnemyMovement : MonoBehaviour
             eAnimator.SetTrigger("Stab Attack");
         }
     }
+
+    public void Die()
+    {
+        eAnimator.SetTrigger("Die");
+        Destroy(gameObject);
+    }
 }
