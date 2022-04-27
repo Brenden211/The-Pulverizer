@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (updateCounter >= updateFrequency && chaseTarget == true)
+        if (updateCounter >= updateFrequency)
         {
             // Sets the Walk Forward bool to true
             eAnimator.SetBool("Walk Forward", true);
@@ -56,6 +56,10 @@ public class EnemyMovement : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Target"))
         {
             eAnimator.SetTrigger("Stab Attack");
+
+            Damage();
+
+            return;
         }
     }
 
@@ -63,5 +67,12 @@ public class EnemyMovement : MonoBehaviour
     {
         eAnimator.SetTrigger("Die");
         Destroy(gameObject);
+    }
+
+    public void Damage()
+    {
+        PlayerStats PS = GetComponent<PlayerStats>();
+
+        PS.PlayerTakeDamage(20);
     }
 }

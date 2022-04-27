@@ -7,6 +7,8 @@ public class MenuUI : MonoBehaviour
 
     public void StartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(1);
     }
     public void Controls()

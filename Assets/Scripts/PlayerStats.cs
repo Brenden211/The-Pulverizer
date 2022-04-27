@@ -1,27 +1,41 @@
 using UnityEngine;
 
+
 public class PlayerStats : MonoBehaviour
 {
-    public static int Points;
-    public static int Rounds;
-    public static int damageTake = 2;
-    public int startingPoints = 300;
+    public int maxHealth = 200;
+    public int currentHealth;
+    public GameObject gameLostUI;
 
-    public static float playerHP;
-    public float playerStartingHP = 10f;
+    public PlayerHealthBar playerHealthBar;
 
     void Start()
     {
-        Points = startingPoints;
-        Rounds = 0;
-        playerHP = playerStartingHP;
+        currentHealth = maxHealth;
     }
 
-    public void PlayerTakeDamage(float amount)
+    void OnTriggerEnter(Collider other)
     {
-        if (playerHP == 0)
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Debug.Log("Player Has Lost!");
+            PlayerTakeDamage(20);
+
+            return;
+        }
+    }
+
+    public void PlayerTakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        playerHealthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            gameLostUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0f;
         }
         else
         {

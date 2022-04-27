@@ -3,23 +3,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float startHealth = 100f;
-    public float damage = 20f;
-    public Slider slider;
+    public int startHealth = 100;
+    public int currentHealth;
+
+    public EnemyHealthBar enemyHealthBar;
 
     private float health;
 
     void Start()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        currentHealth = startHealth;
+        enemyHealthBar.SetMaxHealth(startHealth);
     }
 
-    public void TakeDamage(float amount)
+    public void TakeDamage(int damage)
     {
-        startHealth -= damage;
+        currentHealth -= damage;
 
-        if (slider.value <= 0)
+        enemyHealthBar.SetHealth(currentHealth);
+
+        if (health <= 0)
         {
             EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
 

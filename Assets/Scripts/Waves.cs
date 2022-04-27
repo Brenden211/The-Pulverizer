@@ -18,11 +18,15 @@ public class Waves : MonoBehaviour
     private float randomSpawnPos;
 
     public static bool gameIsWon;
+    public bool GameStop = false;
+    public bool isPaused;
 
     private int waveIndex = 0;
 
     void Start()
     {
+        isPaused = false;
+        GameStop = false;
         waveCounter = 1f;
         gameIsWon = false;
     }
@@ -45,7 +49,6 @@ public class Waves : MonoBehaviour
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        PlayerStats.Rounds++;
 
         for (int i = 0; i < waveIndex; i++)
         {
@@ -59,23 +62,29 @@ public class Waves : MonoBehaviour
     void SpawnEnemy()
     {
 
-        if (waveCounter < 5)
+        if (waveCounter < 5 && GameStop == false)
         {
+            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
 
         }
         else
         {
+            GameStop = true;
             GameOver();
         }
     }
     void GameOver()
     {
-        if (waveCounter >= 10)
-        {
-            gameIsWon = true;
-            gameWonUI.SetActive(true);
-        }
-        return;
+        Cursor.lockState = CursorLockMode.None;
+
+        PauseMenu pauseMenu = GetComponent<PauseMenu>();
+        pauseMenu.GameLost = true;
+        gameIsWon = true;
+        gameWonUI.SetActive(true);
+        Time.timeScale = 0f;
+        isPaused = true;
+
     }
 }

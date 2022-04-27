@@ -36,13 +36,13 @@ public class M1911 : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Debug.Log(hit.transform.name);
+
 
             Enemy enemy = hit.transform.GetComponent<Enemy>();
 
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(20);
             }
 
             if (hit.rigidbody != null)
@@ -51,6 +51,7 @@ public class M1911 : MonoBehaviour
             }
 
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
+
             Destroy(impactGO, 1f);
         }
     }
