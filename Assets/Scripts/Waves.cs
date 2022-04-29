@@ -79,8 +79,8 @@ public class Waves : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
-        PauseMenu pauseMenu = GetComponent<PauseMenu>();
-        pauseMenu.GameLost = true;
+        MainUI mainUI = GetComponent<MainUI>();
+        mainUI.GameLost = true;
         gameIsWon = true;
         gameWonUI.SetActive(true);
         Time.timeScale = 0f;

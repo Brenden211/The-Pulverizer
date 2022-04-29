@@ -1,7 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class PauseMenu : MonoBehaviour
+public class MainUI : MonoBehaviour
 {
     public static bool isPaused = false;
     public bool GameWon = false;

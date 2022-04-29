@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class PlayerHealthBar : MonoBehaviour
 {
-    public Slider slider;
+    public Slider hpSlider;
 
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        hpSlider.maxValue = health;
+        hpSlider.value = health;
     }
 
     public void SetHealth(int health)
     {
-        slider.value = health;
+        hpSlider.value = health;
     }
 }
