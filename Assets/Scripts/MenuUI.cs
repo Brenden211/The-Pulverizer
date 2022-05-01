@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class MenuUI : MonoBehaviour
 {
-    public GameObject menuUI;
-
     public void StartGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(1);
+
+        SceneManager.LoadScene("Stage 1");
     }
     public void Controls()
     {
@@ -20,10 +19,13 @@ public class MenuUI : MonoBehaviour
     {
         SceneManager.LoadScene("Credits");
     }
+    public void Settings()
+    {
+        SceneManager.LoadScene("Settings");
+    }
 
     public void Quit()
     {
         Application.Quit();
     }
-
 }

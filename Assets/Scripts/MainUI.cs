@@ -7,6 +7,7 @@ public class MainUI : MonoBehaviour
     public bool GameWon = false;
     public bool GameLost = false;
 
+    public GameObject mainUI;
     public GameObject GameLostUI;
     public GameObject pauseMenuUI;
 
@@ -46,14 +47,9 @@ public class MainUI : MonoBehaviour
         isPaused = true;
     }
 
-    public void ResumeGame()
-    {
-        Resume();
-    }
-
     public void LoadMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Menu");
         Cursor.lockState = CursorLockMode.None;
         GameLostUI.SetActive(false);
     }

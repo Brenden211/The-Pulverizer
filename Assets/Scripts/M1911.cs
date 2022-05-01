@@ -7,7 +7,6 @@ public class M1911 : MonoBehaviour
     public float impactForce = 30f;
     public float fireRate = 50f;
     public ParticleSystem muzzleFlash;
-    public GameObject impactEffect;
     public Animator M1911Animator;
 
     public Camera fpsCam;
@@ -49,10 +48,6 @@ public class M1911 : MonoBehaviour
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
-
-            GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
-
-            Destroy(impactGO, 1f);
         }
     }
 }
