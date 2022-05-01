@@ -273,7 +273,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 603873125783639009}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 2
+  m_Radius: 1.5
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -317,7 +317,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &603873125783639013
 MonoBehaviour:
@@ -347,9 +347,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80a66ebae9d67242a0124325dd20cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
-  currentHealth: 100
-  enemyHealthBar: {fileID: 6865982378757825121}
+  enemyHealthBar: {fileID: 545279389521198778}
+  enemyStartingHealth: 100
+  enemyCurrentHealth: 100
 --- !u!1 &603961109150574069
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,7 +1705,6 @@ GameObject:
   - component: {fileID: 2720262182806362430}
   - component: {fileID: 3941436838632008799}
   - component: {fileID: 545279389521198778}
-  - component: {fileID: 6865982378757825121}
   m_Layer: 7
   m_Name: Health Bar
   m_TagString: Untagged
@@ -1816,26 +1815,13 @@ MonoBehaviour:
   m_FillRect: {fileID: 5774355610091918565}
   m_HandleRect: {fileID: 0}
   m_Direction: 1
-  m_MinValue: 1
-  m_MaxValue: 10
+  m_MinValue: 0
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 10
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6865982378757825121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2334589566607416528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb81129cbc795846b069be43e22fd51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 545279389521198778}
 --- !u!1 &6415306473573660757
 GameObject:
   m_ObjectHideFlags: 0

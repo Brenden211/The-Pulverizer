@@ -1,50 +1,37 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class MainUI : MonoBehaviour
+public class GameUI : MonoBehaviour
 {
-    public static bool isPaused = false;
+    public bool gameIsPaused = false;
     public bool GameWon = false;
     public bool GameLost = false;
 
-    public GameObject mainUI;
     public GameObject GameLostUI;
     public GameObject pauseMenuUI;
 
     void Update()
     {
-        if (Input.GetKeyDown("escape") || GameWon || GameLost)
+        if (Input.GetKeyDown("escape"))
         {
             Cursor.lockState = CursorLockMode.None;
-
-            if (isPaused)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
-        }
-        else
-        {
-            return;
+            Pause();
         }
     }
 
-    void Resume()
+    public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+        gameIsPaused = false;
     }
 
-    void Pause()
+    public void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        isPaused = true;
+        gameIsPaused = true;
     }
 
     public void LoadMenu()

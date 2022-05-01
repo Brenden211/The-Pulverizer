@@ -416,14 +416,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4957014f8e328940942a49ab6d4c8ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
-  range: 100
-  impactForce: 20
-  fireRate: 1
   muzzleFlash: {fileID: 1227226517}
-  impactEffect: {fileID: 8664091581050959214, guid: 1c9cd05e9147de84896fcb080dc0dd56, type: 3}
   M1911Animator: {fileID: 5061585943966470015}
+  gameUIScript: {fileID: 0}
   fpsCam: {fileID: 0}
+  damage: 20
+  impactForce: 100
+  fireRate: 2
+  range: 200
+  aimIndex: 0
 --- !u!95 &5061585943966470015
 Animator:
   serializedVersion: 4
@@ -623,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2742827023795605573, guid: 599e274319e1c0f459276e7e898a74df, type: 3}
       propertyPath: m_Name
-      value: Gunshot Effect
+      value: Muzzle Flash
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 599e274319e1c0f459276e7e898a74df, type: 3}

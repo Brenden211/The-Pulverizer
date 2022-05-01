@@ -11,17 +11,15 @@ public class Waves : MonoBehaviour
     public GameObject gameWonUI;
     public Text waveInfoText;
 
-    public float timeBetweenWaves = 10f;
-    public float startCountdown = 30f;
-    public float waveCounter = 1f;
-
-    private float randomSpawnPos;
+    public float timeBetweenWaves;
+    public float startCountdown;
+    public float waveCounter;
+    public int waveIndex = 0;
 
     public static bool gameIsWon;
     public bool GameStop = false;
     public bool isPaused;
 
-    private int waveIndex = 0;
 
     void Start()
     {
@@ -79,8 +77,8 @@ public class Waves : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
 
-        MainUI mainUI = GetComponent<MainUI>();
-        mainUI.GameLost = true;
+        GameUI gameUI = GetComponent<GameUI>();
+        gameUI.GameLost = true;
         gameIsWon = true;
         gameWonUI.SetActive(true);
         Time.timeScale = 0f;

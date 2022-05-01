@@ -3,16 +3,38 @@ using UnityEngine;
 
 public class EnemyHealthBar : MonoBehaviour
 {
-    public Slider slider;
+    public Slider enemyHealthBar;
 
-    public void SetMaxHealth(int health)
+    public int enemyStartingHealth = 100;
+    public int enemyCurrentHealth;
+
+    void Start()
     {
-        slider.maxValue = health;
-        slider.value = health;
+        EnemySetMaxHealth(enemyStartingHealth);
+        EnemySetHealth(enemyCurrentHealth);
+    }
+    public void EnemySetMaxHealth(int health)
+    {
+        enemyHealthBar.maxValue = health;
+        enemyHealthBar.value = health;
     }
 
-    public void SetHealth(int health)
+    public void EnemySetHealth(int health)
     {
-        slider.value = health;
+        enemyHealthBar.value = health;
+    }
+
+    public void EnemyTakeDamage(int damage)
+    {
+        enemyCurrentHealth -= damage;
+
+        EnemySetHealth(enemyCurrentHealth);
+
+        if (enemyCurrentHealth <= 0)
+        {
+            EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
+
+            enemyMovement.Die();
+        }
     }
 }
