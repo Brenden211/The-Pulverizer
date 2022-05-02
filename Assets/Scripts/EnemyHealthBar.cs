@@ -26,6 +26,8 @@ public class EnemyHealthBar : MonoBehaviour
 
     public void EnemyTakeDamage(int damage)
     {
+        Debug.Log("Working!");
+
         enemyCurrentHealth -= damage;
 
         EnemySetHealth(enemyCurrentHealth);

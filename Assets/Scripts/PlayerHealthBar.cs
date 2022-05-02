@@ -9,6 +9,8 @@ public class PlayerHealthBar : MonoBehaviour
     public int startingHealth = 100;
     public int currentHealth;
 
+    GameUI gameUI;
+
     void Start()
     {
         SetMaxHealth(startingHealth);
@@ -34,9 +36,10 @@ public class PlayerHealthBar : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            gameLostUI.SetActive(true);
-            Cursor.lockState = CursorLockMode.None;
-            Time.timeScale = 0f;
+
+            gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
+
+            gameUI.GameLost();
         }
         else
         {

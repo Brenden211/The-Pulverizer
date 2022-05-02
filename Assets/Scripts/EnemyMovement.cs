@@ -12,6 +12,8 @@ public class EnemyMovement : MonoBehaviour
 
     public bool chaseTarget = false;
 
+    PlayerHealthBar playerHealthBar;
+
     void Start()
     {
         if (target != null)
@@ -43,6 +45,12 @@ public class EnemyMovement : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Target"))
         {
             eAnimator.SetTrigger("Stab Attack");
+
+            playerHealthBar = GameObject.FindGameObjectWithTag("PlayerHealthBar").GetComponent<PlayerHealthBar>();
+
+            playerHealthBar.PlayerTakeDamage(10);
+
+            return;
         }
     }
 

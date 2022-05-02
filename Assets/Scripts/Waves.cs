@@ -10,23 +10,24 @@ public class Waves : MonoBehaviour
     public Transform spawnPoint;
     public GameObject gameWonUI;
     public Text waveInfoText;
+    public Text enemiesAliveText;
 
     public float timeBetweenWaves;
     public float startCountdown;
     public float waveCounter;
     public int waveIndex = 0;
+    public int enemiesAlive;
 
-    public static bool gameIsWon;
-    public bool GameStop = false;
-    public bool isPaused;
+    public bool gameIsWon;
+    public bool endWaves;
 
+    GameUI gameUI;
 
     void Start()
     {
-        isPaused = false;
-        GameStop = false;
         waveCounter = 1f;
         gameIsWon = false;
+        endWaves = false;
     }
 
     void Update()
@@ -37,52 +38,53 @@ public class Waves : MonoBehaviour
             startCountdown = timeBetweenWaves;
         }
 
-        startCountdown -= Time.deltaTime;
+        if (endWaves == false)
+        {
+            startCountdown -= Time.deltaTime;
+            startCountdown = Mathf.Clamp(startCountdown, 0f, Mathf.Infinity);
+            waveInfoText.text = " wave " + waveCounter + ": " + string.Format("{0:00}", startCountdown);
+            enemiesAliveText.text = " enemies Alive: " + enemiesAlive;
+        }
+        if (enemiesAlive == 0 && waveCounter == 5 || Input.GetButtonDown("GameWon"))
+        {
+            gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
 
-        startCountdown = Mathf.Clamp(startCountdown, 0f, Mathf.Infinity);
-
-        waveInfoText.text = " wave " + waveCounter + ": " + string.Format("{0:00}", startCountdown);
+            gameUI.GameWon();
+        }
     }
 
     IEnumerator SpawnWave()
     {
-        waveIndex++;
-
-        for (int i = 0; i < waveIndex; i++)
+        if (endWaves == false)
         {
-            SpawnEnemy();
-            yield return new WaitForSeconds(2.0f);
+            waveIndex++;
+
+            for (int i = 0; i < waveIndex; i++)
+            {
+                SpawnEnemy();
+                yield return new WaitForSeconds(2.0f);
+            }
+
+            waveCounter++;
         }
 
-        waveCounter++;
     }
 
     void SpawnEnemy()
     {
 
-        if (waveCounter < 5 && GameStop == false)
+        if (waveCounter < 5)
         {
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
             Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            enemiesAlive = enemiesAlive + 3;
 
         }
         else
         {
-            GameStop = true;
-            GameOver();
+            endWaves = true;
+            waveInfoText.text = " waves finished ";
         }
-    }
-    void GameOver()
-    {
-        Cursor.lockState = CursorLockMode.None;
-
-        GameUI gameUI = GetComponent<GameUI>();
-        gameUI.GameLost = true;
-        gameIsWon = true;
-        gameWonUI.SetActive(true);
-        Time.timeScale = 0f;
-        isPaused = true;
-
     }
 }

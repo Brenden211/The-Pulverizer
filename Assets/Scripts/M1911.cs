@@ -7,7 +7,7 @@ public class M1911 : MonoBehaviour
     public GameUI gameUIScript;
     public Camera fpsCam;
 
-    public float damage;
+    public int damage;
     public float impactForce;
     public float fireRate;
     public float range = 500f;
@@ -16,6 +16,10 @@ public class M1911 : MonoBehaviour
 
     void Update()
     {
+        Vector3 back = transform.TransformDirection(Vector3.back) * 20;
+        Debug.DrawRay(fpsCam.transform.position, back, Color.green);
+
+
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && gameUIScript.gameIsPaused == false)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
@@ -35,28 +39,27 @@ public class M1911 : MonoBehaviour
 
     void Shoot()
     {
-        muzzleFlash.Play();
-        M1911Animator.SetTrigger("Shoot");
-        FindObjectOfType<AudioManager>().Play("M1911");
+        muzzleFlash.Play(); // Plays the animation for the muzzle flash
+        M1911Animator.SetTrigger("Shoot"); // Sets the M1911 animator trigger for shoot
+        FindObjectOfType<AudioManager>().Play("M1911"); // Finds the audio clip in the AudioManager and plays the name of it
 
-        RaycastHit hit;
+        RaycastHit hit; // Uses a raycast and stores the data from it in the hit variable
 
-        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) // If statement to check if the raycast from the camera position hit something
         {
-            Debug.Log(hit.transform.name);
+            Debug.Log(hit.transform.name); // Debug statement to say what the raycast hit
 
+            // References the EnemyHealthBar script and stores it the variable which is equal to the raycast hit's objects EnemyHealthBar component
             EnemyHealthBar enemyHealthBar = hit.transform.GetComponent<EnemyHealthBar>();
 
-            if (enemyHealthBar != null)
+            if (enemyHealthBar != null) // If statement to check if the enemyHealthBar component is null if its not then it does the following
             {
-                enemyHealthBar.EnemyTakeDamage(10);
+                enemyHealthBar.EnemyTakeDamage(damage); // Tells the enemyHealthBar script to do the function with the input amount
             }
-            else
+            else // If it doesn't have a enemyHealthBar component it does the following
             {
                 return;
             }
         }
-
-        return;
     }
 }

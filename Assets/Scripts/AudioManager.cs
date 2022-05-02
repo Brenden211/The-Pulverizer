@@ -5,20 +5,6 @@ public class AudioManager : MonoBehaviour
 {
     public Sound[] sounds;
 
-    public bool playThemeOnStart;
-
-    public void Start()
-    {
-        if (playThemeOnStart == true)
-        {
-            Play("Theme");
-        }
-        else
-        {
-            return;
-        }
-    }
-
     void Awake()
     {
         foreach (Sound s in sounds)

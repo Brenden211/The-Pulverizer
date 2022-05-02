@@ -4,10 +4,11 @@ using UnityEngine;
 public class GameUI : MonoBehaviour
 {
     public bool gameIsPaused = false;
-    public bool GameWon = false;
-    public bool GameLost = false;
+    public bool gameWon = false;
+    public bool gameLost = false;
 
     public GameObject GameLostUI;
+    public GameObject GameWonUI;
     public GameObject pauseMenuUI;
 
     void Update()
@@ -39,6 +40,22 @@ public class GameUI : MonoBehaviour
         SceneManager.LoadScene("Menu");
         Cursor.lockState = CursorLockMode.None;
         GameLostUI.SetActive(false);
+    }
+
+    public void GameWon()
+    {
+        gameIsPaused = true;
+        GameWonUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+    }
+
+    public void GameLost()
+    {
+        gameIsPaused = true;
+        GameLostUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
     }
 
     public void QuitGame()

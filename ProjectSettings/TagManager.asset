@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Terrain
   - Enemy
+  - Background Music
+  - PlayerHealthBar
+  - GameUI
   layers:
   - Default
   - TransparentFX
