@@ -2161,6 +2161,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 151496, guid: 9d97c296676698f4c9eb639317cc0e8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 151496, guid: 9d97c296676698f4c9eb639317cc0e8b, type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
@@ -14867,7 +14871,7 @@ GameObject:
   - component: {fileID: 1203380341}
   - component: {fileID: 1203380340}
   - component: {fileID: 1203380339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Barrier
   m_TagString: Untagged
   m_Icon: {fileID: 0}

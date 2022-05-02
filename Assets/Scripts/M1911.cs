@@ -16,10 +16,6 @@ public class M1911 : MonoBehaviour
 
     void Update()
     {
-        Vector3 back = transform.TransformDirection(Vector3.back) * 20;
-        Debug.DrawRay(fpsCam.transform.position, back, Color.green);
-
-
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire && gameUIScript.gameIsPaused == false)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
@@ -44,6 +40,8 @@ public class M1911 : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("M1911"); // Finds the audio clip in the AudioManager and plays the name of it
 
         RaycastHit hit; // Uses a raycast and stores the data from it in the hit variable
+
+        //Debug.DrawRay(fpsCam.transform.position, fpsCam.transform.forward * range, Color.red, 15f);
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) // If statement to check if the raycast from the camera position hit something
         {

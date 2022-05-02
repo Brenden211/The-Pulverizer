@@ -9,22 +9,33 @@ public class MusicControl : MonoBehaviour
 
     void Start()
     {
+        audioSource = FindObjectOfType<AudioSource>().gameObject;
+        MusicIconAnimator.SetBool("MusicOff", false);
         musicOff = false;
     }
 
-    public void MusicOff()
+    void MusicOff()
+    {
+        MusicIconAnimator.SetBool("MusicOff", true);
+        audioSource.SetActive(false);
+        musicOff = true;
+    }
+    void MusicOn()
+    {
+        MusicIconAnimator.SetBool("MusicOff", false);
+        audioSource.SetActive(true);
+        musicOff = false;
+    }
+
+    public void MusicChange()
     {
         if (musicOff == false)
         {
-            MusicIconAnimator.SetBool("MusicOff", true);
-            audioSource.SetActive(false);
-            musicOff = true;
+            MusicOff();
         }
         else
         {
-            MusicIconAnimator.SetBool("MusicOff", false);
-            audioSource.SetActive(true);
-            musicOff = false;
+            MusicOn();
         }
     }
 }
