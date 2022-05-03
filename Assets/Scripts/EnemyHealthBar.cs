@@ -32,10 +32,9 @@ public class EnemyHealthBar : MonoBehaviour
 
         EnemySetHealth(enemyCurrentHealth);
 
-        if (enemyCurrentHealth <= 0)
+        if (enemyCurrentHealth == 0)
         {
             EnemyMovement enemyMovement = GetComponent<EnemyMovement>();
-
             enemyMovement.Die();
         }
     }

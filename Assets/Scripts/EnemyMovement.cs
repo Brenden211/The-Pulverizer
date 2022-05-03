@@ -11,8 +11,11 @@ public class EnemyMovement : MonoBehaviour
     private float updateCounter = 0;
 
     public bool chaseTarget = false;
+    public bool IsAlive = true;
 
     PlayerHealthBar playerHealthBar;
+
+    Waves waves;
 
     void Start()
     {
@@ -25,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (updateCounter >= updateFrequency)
+        if (updateCounter >= updateFrequency && IsAlive == true)
         {
             eAnimator.SetBool("Walk Forward", true);
 
@@ -52,10 +55,17 @@ public class EnemyMovement : MonoBehaviour
 
             return;
         }
+        else
+        {
+            return;
+        }
     }
 
     public void Die()
     {
+        waves = GameObject.FindGameObjectWithTag("Game Manager").GetComponent<Waves>();
+        waves.KillEnemy();
+
         eAnimator.SetTrigger("Die");
         Destroy(gameObject);
     }

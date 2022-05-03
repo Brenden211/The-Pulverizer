@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
+
 public class Waves : MonoBehaviour
 {
     public Transform enemyPrefab;
@@ -32,6 +33,7 @@ public class Waves : MonoBehaviour
 
     void Update()
     {
+
         if (startCountdown <= 0)
         {
             StartCoroutine(SpawnWave());
@@ -45,16 +47,21 @@ public class Waves : MonoBehaviour
             waveInfoText.text = " wave " + waveCounter + ": " + string.Format("{0:00}", startCountdown);
             enemiesAliveText.text = " enemies Alive: " + enemiesAlive;
         }
-        if (enemiesAlive == 0 && waveCounter == 5 || Input.GetButtonDown("GameWon"))
+        if (enemiesAlive == 0 && waveCounter == 6 || Input.GetButtonDown("GameWon"))
         {
             gameUI = GameObject.FindGameObjectWithTag("GameUI").GetComponent<GameUI>();
 
             gameUI.GameWon();
         }
+        else
+        {
+            return;
+        }
     }
 
     IEnumerator SpawnWave()
     {
+
         if (endWaves == false)
         {
             waveIndex++;
@@ -67,7 +74,6 @@ public class Waves : MonoBehaviour
 
             waveCounter++;
         }
-
     }
 
     void SpawnEnemy()
@@ -86,5 +92,11 @@ public class Waves : MonoBehaviour
             endWaves = true;
             waveInfoText.text = " waves finished ";
         }
+    }
+
+    public void KillEnemy()
+    {
+        enemiesAlive = enemiesAlive - 1;
+        enemiesAliveText.text = " enemies Alive: " + enemiesAlive;
     }
 }

@@ -30,6 +30,7 @@ public class PlayerHealthBar : MonoBehaviour
 
     public void PlayerTakeDamage(int damage)
     {
+        FindObjectOfType<AudioManager>().Play("Hurt Sound");
         currentHealth -= damage;
 
         SetHealth(currentHealth);

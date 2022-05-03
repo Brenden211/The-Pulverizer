@@ -9,6 +9,7 @@ TagManager:
   - Background Music
   - PlayerHealthBar
   - GameUI
+  - Game Manager
   layers:
   - Default
   - TransparentFX

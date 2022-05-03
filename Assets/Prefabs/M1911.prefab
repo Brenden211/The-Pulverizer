@@ -420,7 +420,7 @@ MonoBehaviour:
   M1911Animator: {fileID: 5061585943966470015}
   gameUIScript: {fileID: 0}
   fpsCam: {fileID: 0}
-  damage: 20
+  damage: 25
   impactForce: 100
   fireRate: 2
   range: 200
